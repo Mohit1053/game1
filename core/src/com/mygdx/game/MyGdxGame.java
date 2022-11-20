@@ -17,6 +17,7 @@ public class MyGdxGame extends ApplicationAdapter {
 //	Animation animation;
 //	Object reg;
 //	float stateTime;
+//	abc
 	private Texture Loading1;
 	private Texture Loading2;
 	private Texture Loading3;
