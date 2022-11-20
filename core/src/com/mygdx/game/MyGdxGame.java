@@ -1,31 +1,27 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.graphics.g2d.Animation;
 
-public class MyGdxGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+public class MyGdxGame extends Actor {
+
+	Animation animation;
+	Object reg;
+	float stateTime;
+
+	public MyGdxGame() {
+		this.animation = animation;
+		reg = animation.getKeyFrame(0);
 	}
 
 	@Override
-	public void render () {
-		ScreenUtils.clear(0f, 1.0f, 0, 1);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+	public void act(float delta) {
+		stateTime += delta;
+		reg = animation.getKeyFrame(stateTime);
 	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
+	public void draw(SpriteBatch batch, float parentAlpha) {
+		batch.draw((Texture) reg, getX(), getY());
 	}
 }
