@@ -2,11 +2,13 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class MyGdxGame implements ApplicationListener {
 //
@@ -19,6 +21,10 @@ public class MyGdxGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Sprite sprite;
+	private SpriteBatch spriteBatch;
+	private BitmapFont font;
+	private TextureRegion textureRegion;
+	private TextureRegion textureRegion2;
 
 //	public MyGdxGame() {
 //		this.animation = animation;
@@ -38,13 +44,27 @@ public class MyGdxGame implements ApplicationListener {
 	public void create() {
 //		Loading1=new Texture(Gdx.files.internal("Loading1.jpg"));
 //		Loading2=new Texture(Gdx.files.internal("Loading2.jpg"));
-		Loading1=new Texture(Gdx.files.internal("Loading1.png"));
+	//	Loading1=new Texture(Gdx.files.internal("Loading1.png"));
 		//camera = new OrthographicCamera();
 		//camera.setToOrtho(false, 800, 480);
-		batch = new SpriteBatch();
-		sprite=new Sprite(Loading1);
+//		batch = new SpriteBatch();
+//		sprite=new Sprite(Loading1);
 //		sprite=new Sprite(Loading2);
 //		sprite=new Sprite(Loading3);
+
+		spriteBatch = new SpriteBatch();
+		font = new BitmapFont(true);
+		camera = new OrthographicCamera();
+
+		Loading1 = new Texture(Gdx.files.internal("Loading1.png"));
+		textureRegion = new TextureRegion(Loading1);
+		textureRegion.flip(false, true);
+
+		Loading2 = new Texture(Gdx.files.internal("Loading2.png"));
+		textureRegion2 = new TextureRegion(Loading2);
+		textureRegion2.flip(false, true);
+
+		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 
 	@Override
@@ -54,10 +74,28 @@ public class MyGdxGame implements ApplicationListener {
 
 	@Override
 	public void render() {
-		ScreenUtils.clear(0, 0, 0.2f, 1);
-		batch.begin();
-		sprite.draw(batch);
-		batch.end();
+//		ScreenUtils.clear(0, 0, 0.2f, 1);
+//		batch.begin();
+//		sprite.draw(batch);
+//		batch.end();
+
+		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+		camera.update();
+		spriteBatch.setProjectionMatrix(camera.combined);
+
+		spriteBatch.begin();
+		//font.draw(spriteBatch, "Hacking Time", 0, 0);
+		spriteBatch.draw(textureRegion2, 0, 0);
+	spriteBatch.draw(textureRegion, 100, 250);
+//		spriteBatch.draw(textureRegion, 64, 0);
+//		spriteBatch.draw(textureRegion, 96, 0);
+//		spriteBatch.draw(textureRegion, 128, 0);
+//		spriteBatch.draw(textureRegion, 160, 0);
+//		spriteBatch.draw(textureRegion, 192, 0);
+//		spriteBatch.draw(textureRegion, 224, 0);
+		spriteBatch.end();
 
 	}
 
