@@ -9,6 +9,13 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+
+import java.text.CollationElementIterator;
 
 
 //test
@@ -55,18 +62,42 @@ public class MyGdxGame extends ApplicationAdapter {
 //		sprite=new Sprite(Loading2);
 //		sprite=new Sprite(Loading3);
 
-		spriteBatch = new SpriteBatch();
-		font = new BitmapFont(true);
-		camera = new OrthographicCamera();
+		// ImageButton
+		ImageButton button3 = null;
+		float col_width = 0;
+		int row_height = 0;
+		button3.setSize(col_width*4,(float)(row_height*2));
+		button3.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("switch_off.png"))));
+		button3.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("switch_on.png"))));
+		button3.setPosition(col_width,Gdx.graphics.getHeight()-row_height*6);
+		button3.addListener(new InputListener(){
+			@Override
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				CollationElementIterator outputLabel = null;
+				outputLabel.setText("Press a Button");
+			}
+			@Override
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				CollationElementIterator outputLabel = null;
+				outputLabel.setText("Pressed Image Button");
+				return true;
+			}
+		});
+		Group stage = null;
+		stage.addActor(button3);
 
-//	s
-
-		Loading2 = new Texture(Gdx.files.internal("Screen2.png"));
-		textureRegion2 = new TextureRegion(Loading2);
-		textureRegion2.flip(false, true);
-
-		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-	}
+//		spriteBatch = new SpriteBatch();
+//		font = new BitmapFont(true);
+//		camera = new OrthographicCamera();
+//
+//
+//
+//		Loading2 = new Texture(Gdx.files.internal("Screen2.png"));
+//		textureRegion2 = new TextureRegion(Loading2);
+//		textureRegion2.flip(false, true);
+//
+//		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+}
 
 	@Override
 	public void resize(int width, int height) {
