@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.ScreenUtils;
 import org.w3c.dom.Text;
 
-public class MyGdxGame implements ApplicationListener {
+public class MyGdxGame extends ApplicationAdapter {
 //
 //	Animation animation;
 //	Object reg;
