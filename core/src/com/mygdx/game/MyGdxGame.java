@@ -1,6 +1,6 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -12,7 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 
 //test
-public class MyGdxGame implements ApplicationListener {
+public class MyGdxGame extends ApplicationAdapter {
 //
 //	Animation animation;
 //	Object reg;
@@ -58,7 +58,7 @@ public class MyGdxGame implements ApplicationListener {
 		font = new BitmapFont(true);
 		camera = new OrthographicCamera();
 
-		Loading1 = new Texture(Gdx.files.internal("Loading1.png"));
+		Loading1 = new Texture(Gdx.files.internal("Bar1.png"));
 		textureRegion = new TextureRegion(Loading1);
 		textureRegion.flip(false, true);
 
@@ -90,7 +90,7 @@ public class MyGdxGame implements ApplicationListener {
 		spriteBatch.begin();
 		//font.draw(spriteBatch, "Hacking Time", 0, 0);
 		spriteBatch.draw(textureRegion2, 0, 0);
-	spriteBatch.draw(textureRegion, 100, 250);
+		spriteBatch.draw(textureRegion, 250, 370);
 //		spriteBatch.draw(textureRegion, 64, 0);
 //		spriteBatch.draw(textureRegion, 96, 0);
 //		spriteBatch.draw(textureRegion, 128, 0);
