@@ -1,15 +1,12 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.ScreenUtils;
-import org.w3c.dom.Text;
 
 public class MyGdxGame extends ApplicationAdapter {
 //
@@ -18,8 +15,9 @@ public class MyGdxGame extends ApplicationAdapter {
 //	float stateTime;
 	private Texture Loading1;
 	private Texture Loading2;
-	private Texture Loading3;
-	private OrthographicCamera camera;
+	private Texture texture;
+	private Sprite sprite;
+ 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 
 //	public MyGdxGame() {
@@ -38,12 +36,13 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void create() {
-		Loading1=new Texture(Gdx.files.internal("Loading1.jpg"));
-		Loading2=new Texture(Gdx.files.internal("Loading2.jpg"));
-		Loading3=new Texture(Gdx.files.internal("Loading3.png"));
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 480);
+//		Loading1=new Texture(Gdx.files.internal("Loading1.jpg"));
+//		Loading2=new Texture(Gdx.files.internal("Loading2.jpg"));
+		texture=new Texture(Gdx.files.internal("Loading3.png"));
+//		camera = new OrthographicCamera();
+//		camera.setToOrtho(false, 800, 480);
 		batch = new SpriteBatch();
+		sprite=new Sprite(texture);
 	}
 
 	@Override
@@ -53,9 +52,12 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void render() {
+		//Gdx.gl.glClearColor(1, 1, 1, 1);
+		//Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		ScreenUtils.clear(0, 0, 0.2f, 1);
-		camera.update();
-		batch.setProjectionMatrix(camera.combined);
+		batch.begin();
+		sprite.draw(batch);
+		batch.end();
 	}
 
 	@Override
@@ -70,9 +72,9 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void dispose() {
-		Loading1.dispose();
-		Loading2.dispose();
-		Loading3.dispose();
+
+		texture.dispose();
+		batch.dispose();
 
 	}
 }
