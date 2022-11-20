@@ -26,12 +26,12 @@ public class MyGdxGame extends Actor implements ApplicationListener {
 		batch.draw((Texture) reg, getX(), getY());
 	}
 
-	@Override
+
 	public void create() {
 
 	}
 
-	@Override
+
 	public void resize(int width, int height) {
 
 	}
