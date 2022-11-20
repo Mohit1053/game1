@@ -29,7 +29,8 @@ public class MyGdxGame extends Actor implements ApplicationListener {
 
 	@Override
 	public void create() {
-		Texture Loding1;
+		Texture Loading1;
+		Texture Loading2;
 
 	}
 
