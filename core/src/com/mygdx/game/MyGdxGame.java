@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import org.w3c.dom.Text;
 
 public class MyGdxGame extends Actor implements ApplicationListener {
 
@@ -26,12 +27,13 @@ public class MyGdxGame extends Actor implements ApplicationListener {
 		batch.draw((Texture) reg, getX(), getY());
 	}
 
-
+	@Override
 	public void create() {
+		Texture Loding1;
 
 	}
 
-
+	@Override
 	public void resize(int width, int height) {
 
 	}
