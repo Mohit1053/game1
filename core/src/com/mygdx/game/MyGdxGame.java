@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.utils.ScreenUtils;
 import org.w3c.dom.Text;
 
 public class MyGdxGame implements ApplicationListener {
@@ -51,7 +52,9 @@ public class MyGdxGame implements ApplicationListener {
 
 	@Override
 	public void render() {
-
+		ScreenUtils.clear(0, 0, 0.2f, 1);
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
 	}
 
 	@Override
@@ -66,6 +69,9 @@ public class MyGdxGame implements ApplicationListener {
 
 	@Override
 	public void dispose() {
+		Loading1.dispose();
+		Loading2.dispose();
+		Loading3.dispose();
 
 	}
 }
