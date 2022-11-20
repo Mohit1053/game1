@@ -77,10 +77,10 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void render() {
-//		ScreenUtils.clear(0, 0, 0.2f, 1);
-//		batch.begin();
-//		sprite.draw(batch);
-//		batch.end();
+		ScreenUtils.clear(0, 0, 0.2f, 1);
+		batch.begin();
+		sprite.draw(batch);
+		batch.end();
 
 		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
