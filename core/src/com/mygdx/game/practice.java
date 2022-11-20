@@ -45,3 +45,32 @@
 //        spriteBatch.end();
 //    }
 //}
+//private float time;
+//private int counter=10;
+//
+//public void update(float delta) {
+//        Texture one = new Texture(Gdx.files.internal("Screen1.png"));
+//        oneImg = new Image(one);
+//        Texture two = new Texture(Gdx.files.internal("Loading2.png"));
+//        twoImg = new Image(two);
+//        Texture splash = new Texture(Gdx.files.internal("Loading3.png"));
+//        splashImg = new Image(splash);
+//
+//        oneImg.setOrigin(splashImg.getWidth() / 2, splashImg.getHeight() / 2);
+//
+//        stage.act(delta);
+//        counter-=Gdx.graphics.getRawDeltaTime();
+//        counter-=delta;
+//        if (counter==3)
+//        {
+//        stage.addActor(oneImg);
+//        }
+//        else if(counter==2)
+//        {
+//        stage.addActor(twoImg);
+//        }
+//        else if(counter==1)
+//        {
+//        stage.addActor(splashImg);
+//        }
+//}

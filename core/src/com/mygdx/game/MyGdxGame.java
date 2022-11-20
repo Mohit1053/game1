@@ -42,7 +42,7 @@ public class MyGdxGame extends ApplicationAdapter {
 //	public void draw(SpriteBatch batch, float parentAlpha) {
 //		batch.draw((Texture) reg, getX(), getY());
 	//}
-
+	int count=1;
 	@Override
 	public void create() {
 //		Loading1=new Texture(Gdx.files.internal("Loading1.jpg"));
@@ -59,11 +59,9 @@ public class MyGdxGame extends ApplicationAdapter {
 		font = new BitmapFont(true);
 		camera = new OrthographicCamera();
 
-		Loading1 = new Texture(Gdx.files.internal("Bar1.png"));
-		textureRegion = new TextureRegion(Loading1);
-		textureRegion.flip(false, true);
+//	s
 
-		Loading2 = new Texture(Gdx.files.internal("Loading2.png"));
+		Loading2 = new Texture(Gdx.files.internal("Screen2.png"));
 		textureRegion2 = new TextureRegion(Loading2);
 		textureRegion2.flip(false, true);
 
@@ -77,10 +75,10 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void render() {
-		ScreenUtils.clear(0, 0, 0.2f, 1);
-		batch.begin();
-		sprite.draw(batch);
-		batch.end();
+//		ScreenUtils.clear(0, 0, 0.2f, 1);
+//		batch.begin();
+//		sprite.draw(batch);
+//		batch.end();
 
 		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -91,13 +89,8 @@ public class MyGdxGame extends ApplicationAdapter {
 		spriteBatch.begin();
 		//font.draw(spriteBatch, "Hacking Time", 0, 0);
 		spriteBatch.draw(textureRegion2, 0, 0);
-		spriteBatch.draw(textureRegion, 250, 370);
-//		spriteBatch.draw(textureRegion, 64, 0);
-//		spriteBatch.draw(textureRegion, 96, 0);
-//		spriteBatch.draw(textureRegion, 128, 0);
-//		spriteBatch.draw(textureRegion, 160, 0);
-//		spriteBatch.draw(textureRegion, 192, 0);
-//		spriteBatch.draw(textureRegion, 224, 0);
+	//	spriteBatch.draw(textureRegion, 250, 370);
+
 		spriteBatch.end();
 
 	}
