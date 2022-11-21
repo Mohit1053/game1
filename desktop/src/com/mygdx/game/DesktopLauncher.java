@@ -11,6 +11,21 @@ public class DesktopLauncher {
 		config.setWindowedMode(800, 480);
 		config.useVsync(true);
 		config.setTitle("Tank Stars Game");
-		new Lwjgl3Application(new MyGdxGame(), config);
+		new Lwjgl3Application(new MyGdxGame() {
+			@Override
+			public void render(float delta) {
+
+			}
+
+			@Override
+			protected float getX() {
+				return 0;
+			}
+
+			@Override
+			protected float getY() {
+				return 0;
+			}
+		}, config);
 	}
 }

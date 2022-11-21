@@ -5,21 +5,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.utils.ScreenUtils;
 
-import java.text.CollationElementIterator;
-
-
-//test
-public class MyGdxGame extends ApplicationAdapter {
+public abstract class MyGdxGame extends ApplicationAdapter implements Menu {
 //
 //	Animation animation;
 //	Object reg;
@@ -35,56 +24,55 @@ public class MyGdxGame extends ApplicationAdapter {
 	private BitmapFont font;
 	private TextureRegion textureRegion;
 	private TextureRegion textureRegion2;
+	private float stateTime;
+	private Object reg;
+	private Animation animation;
 
-//	public MyGdxGame() {
+	public MyGdxGame() {
 //		this.animation = animation;
 //		reg = animation.getKeyFrame(0);
-//	}ijhih
-//
-//	@Override
-//	public void act(float delta) {
-//		stateTime += delta;
-//		reg = animation.getKeyFrame(stateTime);
-//	}
-//	public void draw(SpriteBatch batch, float parentAlpha) {
-//		batch.draw((Texture) reg, getX(), getY());
+	}
+
+	@Override
+	public void act(float delta) {
+		stateTime += delta;
+		reg = animation.getKeyFrame(stateTime);
+	}
+	public void draw(SpriteBatch batch, float parentAlpha) {
+		batch.draw((Texture) reg, getX(), getY());
 	//}
 	int count=1;
-	@Override
-	public void create() {
-//		Loading1=new Texture(Gdx.files.internal("Loading1.jpg"));
-//		Loading2=new Texture(Gdx.files.internal("Loading2.jpg"));
-	//	Loading1=new Texture(Gdx.files.internal("Loading1.png"));
-		//camera = new OrthographicCamera();
-		//camera.setToOrtho(false, 800, 480);
-//		batch = new SpriteBatch();
-//		sprite=new Sprite(Loading1);
-//		sprite=new Sprite(Loading2);
-//		sprite=new Sprite(Loading3);
+		class MainMenuScreen extends MyGdxGame {
 
-		// ImageButton
-		ImageButton button3 = null;
-		float col_width = 0;
-		int row_height = 0;
-		button3.setSize(col_width*4,(float)(row_height*2));
-		button3.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("switch_off.png"))));
-		button3.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("switch_on.png"))));
-		button3.setPosition(col_width,Gdx.graphics.getHeight()-row_height*6);
-		button3.addListener(new InputListener(){
+			private MyGdxGame game;
+
 			@Override
-			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				CollationElementIterator outputLabel = null;
-				outputLabel.setText("Press a Button");
+			protected float getY() {
+				return 0;
 			}
+
 			@Override
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-				CollationElementIterator outputLabel = null;
-				outputLabel.setText("Pressed Image Button");
-				return true;
+			protected float getX() {
+				return 0;
 			}
-		});
-		Group stage = null;
-		stage.addActor(button3);
+
+			@Override
+			public void render(float delta) {
+				ScreenUtils.clear(0, 0, 0.2f, 1);
+
+				camera.update();
+				game.batch.setProjectionMatrix(camera.combined);
+
+				game.batch.begin();
+				game.font.draw(game.batch, "Welcome to Drop!!! ", 100, 150);
+				game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
+				game.batch.end();
+
+				if (Gdx.input.isTouched()) {
+					game.setScreen(new GameScreen(game));
+					dispose();
+				}
+			}
 
 //		spriteBatch = new SpriteBatch();
 //		font = new BitmapFont(true);
@@ -99,31 +87,19 @@ public class MyGdxGame extends ApplicationAdapter {
 //		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 }
 
-	@Override
-	public void resize(int width, int height) {
-
-	}
-
-	@Override
-	public void render() {
-//		ScreenUtils.clear(0, 0, 0.2f, 1);
-//		batch.begin();
-//		sprite.draw(batch);
-//		batch.end();
-
-		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		camera.update();
-		spriteBatch.setProjectionMatrix(camera.combined);
-
-		spriteBatch.begin();
-		//font.draw(spriteBatch, "Hacking Time", 0, 0);
-		spriteBatch.draw(textureRegion2, 0, 0);
-	//	spriteBatch.draw(textureRegion, 250, 370);
-
-		spriteBatch.end();
-
+//		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
+//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//
+//		camera.update();
+//		spriteBatch.setProjectionMatrix(camera.combined);
+//
+//		spriteBatch.begin();
+//		//font.draw(spriteBatch, "Hacking Time", 0, 0);
+//		spriteBatch.draw(textureRegion2, 0, 0);
+//	//	spriteBatch.draw(textureRegion, 250, 370);
+//
+//		spriteBatch.end();
+//
 	}
 
 	@Override
@@ -144,4 +120,23 @@ public class MyGdxGame extends ApplicationAdapter {
 //		Loading3.dispose();
 
 	}
+
+	public abstract void render(float delta);
+
+	protected abstract float getX();
+
+	protected abstract float getY();
+
+	private void setScreen(GameScreen gameScreen) {
+
+	}
 }
+
+
+
+
+
+
+
+
+

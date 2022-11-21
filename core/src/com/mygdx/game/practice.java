@@ -390,3 +390,27 @@
 //
 //    }
 //}
+
+
+//
+//public class MainMenuScreen implements Screen {
+//
+//    //public MainMenuScreen(final Drop game)....
+//
+//    @Override
+//    public void render(float delta) {
+//        ScreenUtils.clear(0, 0, 0.2f, 1);
+//
+//        camera.update();
+//        game.batch.setProjectionMatrix(camera.combined);
+//
+//        game.batch.begin();
+//        game.font.draw(game.batch, "Welcome to Drop!!! ", 100, 150);
+//        game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
+//        game.batch.end();
+//
+//        if (Gdx.input.isTouched()) {
+//            game.setScreen(new GameScreen(game));
+//            dispose();
+//        }
+//    }
