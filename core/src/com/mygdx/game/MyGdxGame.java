@@ -39,7 +39,7 @@ public class MyGdxGame extends ApplicationAdapter {
 //	public MyGdxGame() {
 //		this.animation = animation;
 //		reg = animation.getKeyFrame(0);
-//	}
+//	}ijhih
 //
 //	@Override
 //	public void act(float delta) {
